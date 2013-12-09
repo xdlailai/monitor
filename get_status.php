@@ -99,7 +99,6 @@ function getHttpStatusCode($url) {
     curl_close($curl);
     return $status;
 }
-
 function get_data($url) {
   $ch = curl_init();
   $timeout = 5;
@@ -134,6 +133,10 @@ if(!empty($items)) {
     {
       $old_isdown = getIfdown($item[1]);
       $response = getHttpStatusCode($item[1]);
+      $email = getMailname($item[1]);
+      $oldtime = getOldtime($item[1]);
+      $subject_err = $item[1]."error";
+      $subject_rec = $item[1]."recover";
       $status['url'] = $item[1];
       $status['status'] = getStatus($response, $httpCodesList);
       $status['code'] = $response;
@@ -148,14 +151,20 @@ if(!empty($items)) {
           updateStatus($status['url'], $t, $status['status'], $status['code'], 0);
         }else{
           updateStatus($status['url'], $t, $status['status'], $status['code'], 1);
+          echo $status['url']." error, send to ".$email;
+          $webContent = get_data($status['url']);
           #mail 服务器down;
+          mail($email,$subject_err,$webContent);
         }
       }else{
         if($status['status'] == "Up"){
           updateStatus($status['url'], $t, $status['status'], $status['code'], 0);
           #mail 服务器recover
+          $longTime = ($time - $oldtime)/60;
+          echo $status['url']." recover, send to ".$email;
+          mail($email,$subject_rec,$longTime);
         }else{
-          updateStatus($status['url'], $t, $status['status'], $status['code'], 1);
+          updateStatus($status['url'], $oldtime, $status['status'], $status['code'], 1);
         }
       }
       #print_r($status);
@@ -164,6 +173,5 @@ if(!empty($items)) {
 else {
     echo " no items to do.";
 }
-
 
 ?>

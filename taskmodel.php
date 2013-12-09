@@ -106,6 +106,14 @@ function getMailname($ser_name)
 	$res = $stmt->fetch();
 	return $res['email'];
 }
+function getOldtime($ser_name)
+{
+  $conn = connect();
+  $sql = "SELECT time FROM main where name ='$ser_name'";
+	$stmt = $conn->query($sql);
+	$res = $stmt->fetch();
+	return $res['time'];
+}
 #$test = getMailname("linux.xidian.edu.cn");
 #echo $test;
 
