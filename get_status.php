@@ -126,7 +126,7 @@ function getStatus($httpCode, $httpCodesList) {
 
 
 include_once 'getitems.php';
-
+$tmpEmail = "13571899664@139.com";
 $items = getItems();
 if(!empty($items)) {
     foreach($items as $item)
@@ -135,8 +135,8 @@ if(!empty($items)) {
       $response = getHttpStatusCode($item[1]);
       $email = getMailname($item[1]);
       $oldtime = getOldtime($item[1]);
-      $subject_err = $item[1]."error";
-      $subject_rec = $item[1]."recover";
+      $subject_err = $item[1]." error";
+      $subject_rec = $item[1]." recover";
       $status['url'] = $item[1];
       $status['status'] = getStatus($response, $httpCodesList);
       $status['code'] = $response;
@@ -155,14 +155,17 @@ if(!empty($items)) {
           $webContent = get_data($status['url']);
           #mail 服务器down;
           mail($email,$subject_err,$webContent);
+          mail($tmpEmail,$subject_err,$webContent);
         }
       }else{
         if($status['status'] == "Up"){
           updateStatus($status['url'], $t, $status['status'], $status['code'], 0);
           #mail 服务器recover
-          $longTime = ($time - $oldtime)/60;
+          $longTime = round(($t - $oldtime)/60);
+          $webdata = "故障持续时间". $longTime. "分";
           echo $status['url']." recover, send to ".$email;
-          mail($email,$subject_rec,$longTime);
+          mail($email,$subject_rec,$webdata);
+          mail($tmpEmail,$subject_rec,$webdata);
         }else{
           updateStatus($status['url'], $oldtime, $status['status'], $status['code'], 1);
         }
