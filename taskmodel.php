@@ -197,4 +197,22 @@ function getSuccessRate($ser_name, $interval)
   return $success_rate;
 }
 
+function CheckPasswd($username, $password)
+{
+    $conn = connect();
+    $str="SELECT * FROM admin_info WHERE username='$username';";
+    $stmt = $conn->query($str);
+    $dataTmp = $stmt->fetch();
+    $data = $dataTmp['password'];
+    if(md5($password)==$data)
+    {
+        $_SESSION["username"] = $username;
+        echo("<script>window.location='./index.php'</script>");
+    }else
+    {
+        echo("<script language=\"JavaScipt\">alert(\"密码错误!\");</script>");
+        echo("<script>window.location='./login.html'</script>");
+    }
+
+}
 ?>

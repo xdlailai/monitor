@@ -202,7 +202,13 @@
   <link rel="stylesheet" type="text/css" href="themes/<?php echo $style ?>/style.css"/>
 </head>
 <body>
-
+<?php
+    @session_start();
+    if(@$_SESSION["username"])
+        echo "";
+    else
+        echo("<script>window.location='login.html'</script>");
+?>
 <div id="wrap">
   <div id="sidebar"><?php write_side_bar(); ?></div>
    <div id="content">
