@@ -21,7 +21,7 @@ function validate_input()
   $style = isset($_GET['style']) ? $_GET['style'] : '';
   if(!in_array($page, $page_list))
   {
-    $page = $page_list[0];
+    $page = a;
   }
   if(!in_array($iface, $iface_list))
   {

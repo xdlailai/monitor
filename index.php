@@ -15,6 +15,8 @@
         global $page_list, $page_title;
 
         $p = "&amp;graph=$graph&amp;style=$style";
+        
+        print "<li class=\"page\"><a href=\"$script?if=allserver$p&amp;page=a\">概述</a></li>\n";
 
         print "<ul class=\"iface\">\n";
         foreach ($iface_list as $if)
@@ -212,11 +214,41 @@
 <div id="wrap">
   <div id="sidebar"><?php write_side_bar(); ?></div>
    <div id="content">
-    <div id="header"><?php print T('Traffic data for')." $iface_title[$iface] ($iface)";?></div>
+    <div id="header"><?php print T('Status for')." $iface_title[$iface] ($iface)";?></div>
     <div id="main">
     <?php
     $graph_params = "if=$iface&amp;page=$page&amp;style=$style";
-    if ($page != 's' && $page != 'c')
+    $items = getAllStatus();
+    if($page =='a'){
+        if(!empty($items))
+        {
+             echo "<table border='1'>
+             <tr>
+             <th>监控项目</th>
+             <th>更新时间</th>
+             <th>状态</th>
+             <th>状态代码</th>
+             <th>可用率</th>
+             </tr>";
+             foreach($items as $item)
+             {
+                 $strtime=date("Y-m-d H:i:s", "$item[2]");
+                 $success_rate = getSuccessRate($item[1], 7);
+                 $succesee_rate =$success_rate.'%';
+                 echo "<tr>
+                     <td>".$item[1]."</td>
+                     <td>".$strtime."</td>
+                     <td>".$item[3]."</td>
+                     <td>".$item[4]."</td>
+                     <td>".$success_rate."</td>";
+                 echo "</tr>";
+             }
+        }
+    }
+
+
+
+    if ($page != 's' && $page != 'c'&& $page != 'a')
         if ($graph_format == 'svg') {
 	     print "<object type=\"image/svg+xml\" width=\"692\" height=\"297\" data=\"graph_svg.php?$graph_params\"></object>\n";
         } else {
