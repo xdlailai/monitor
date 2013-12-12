@@ -16,10 +16,10 @@
 
         $p = "&amp;graph=$graph&amp;style=$style";
         
-        print "<li class=\"page\"><a href=\"$script?if=allserver$p&amp;page=a\">概述</a></li>\n";
 
 //        print "<ul class=\"iface\">\n";
         print "<div id=\"nav\">";
+        print "<li class=\"page\"><a href=\"$script?if=allserver$p&amp;page=a\">概述</a></li>\n";
         $i = 1;
         foreach ($iface_list as $if)
         {
@@ -39,7 +39,7 @@
         }
         print "</div>\n";
         print "<div class=\"right\" style=\"padding-top:6px\">";
-        print "<p class=\"btn_create_right\" style=\"width:100px;\"><a href=\"additem_web.php\">创建监控项目</a></p>";
+        print "<p class=\"btn_create_right\" style=\"width:150px;\"><a href=\"additem_web.php\">创建监控项目</a></p>";
         print "</div>";
     }
 
@@ -224,7 +224,7 @@
     <style type="text/css">
 <!--
 *{margin:0:padding:0;list-style:none;font-size;14px}
-#nav{margin:10px;text-align:center;line-height:25px;width:200px;}
+#nav{margin:10px;text-align:center;line-height:25px;width:150px;}
 .title{background:#336699;color:#fff;border-bottom:1px solid #fff;cursor:pointer;}
 .title1{background:#888;color:#000;border-bottom:1px solid #666;cursor:pointer;}
 .content li{color:#336699;background:#ddd;border-bottom:1px solid #fff;}
