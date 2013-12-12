@@ -18,27 +18,26 @@
         
         print "<li class=\"page\"><a href=\"$script?if=allserver$p&amp;page=a\">概述</a></li>\n";
 
-        print "<ul class=\"iface\">\n";
+//        print "<ul class=\"iface\">\n";
+        print "<div id=\"nav\">";
+        $i = 1;
         foreach ($iface_list as $if)
         {
-            print "<li class=\"iface\">";
-            if (isset($iface_title[$if]))
-            {
-                print $iface_title[$if];
-            }
-            else
-            {
-                print $if;
-            }
-            print "<ul class=\"page\">\n";
+            //print "<li class=\"iface\">";
+            print "<div class=\"title\" id=\"menu$i\" onclick=\"showmenu($i)\"> $if</div>";
+            print "<div id=\"list$i\" class=\"content\" style=\"display:none\">";
+            print "<ul>";
             foreach ($page_list as $pg)
             {
-                print "<li class=\"page\"><a href=\"$script?if=$if$p&amp;page=$pg\">".$page_title[$pg]."</a></li>\n";
+                print "<li><a href=\"$script?if=$if$p&amp;page=$pg\">".$page_title[$pg]."</a></li>\n";
             }
-            print "</ul></li>\n";
+            print "<li><a href='deleteitem.php?id=\"$if\"' onclick='return CmdConfirm();'>delete</a></li>";
+            print "</ul>";
+            print "</div>";
+            $i++;
 
         }
-        print "</ul>\n";
+        print "</div>\n";
         print "<div class=\"right\" style=\"padding-top:6px\">";
         print "<p class=\"btn_create_right\" style=\"width:100px;\"><a href=\"additem_web.php\">创建监控项目</a></p>";
         print "</div>";
@@ -201,6 +200,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <title>traffic counter</title>
+  <script language = JavaScript>
+    function showmenu(id) {
+        var list = document.getElementById("list"+id);
+        var menu = document.getElementById("menu"+id);
+        if(list.style.display=="none"){
+            document.getElementById("list"+id).style.display="block";
+            menu.className = "title1";
+        }else{
+            document.getElementById("list"+id).style.display="none";
+            menu.className = "title";
+        }
+    }
+    function CmdConfirm(){
+        if(window.confirm("确定要删除此记录?")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    </script>
+    <style type="text/css">
+<!--
+*{margin:0:padding:0;list-style:none;font-size;14px}
+#nav{margin:10px;text-align:center;line-height:25px;width:200px;}
+.title{background:#336699;color:#fff;border-bottom:1px solid #fff;cursor:pointer;}
+.title1{background:#888;color:#000;border-bottom:1px solid #666;cursor:pointer;}
+.content li{color:#336699;background:#ddd;border-bottom:1px solid #fff;}
+-->
+</style>
+     
+
   <link rel="stylesheet" type="text/css" href="themes/<?php echo $style ?>/style.css"/>
 </head>
 <body>
@@ -243,6 +274,7 @@
                      <td>".$success_rate."</td>";
                  echo "</tr>";
              }
+             echo "</table>";
         }
     }
 

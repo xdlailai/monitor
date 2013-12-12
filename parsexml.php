@@ -25,7 +25,7 @@ function validate_input()
   }
   if(!in_array($iface, $iface_list))
   {
-    $iface = $iface_list[0];
+    $iface = allserver;
   }
   if(!in_array($graph, $graph_list))
   {
@@ -43,7 +43,8 @@ function get_xml_data($iface)
   global $day, $month, $top, $interface, $total_rx, $total_tx;
   global $cpu, $mem, $load, $download_rate, $upload_rate;
   global $partition_dir, $partition_total,$partition_used, $partition_pct;
-  $xml=simplexml_load_file($iface);
+  $ifacedir="xmldata/".$iface;
+  $xml=simplexml_load_file($ifacedir);
   $cpu=$xml->info->cpu;
   $mem=$xml->info->mem;
   $load=$xml->info->load;

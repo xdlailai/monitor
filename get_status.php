@@ -150,12 +150,18 @@ if(!empty($items)) {
         if($status['status'] == "Up"){
           updateStatus($status['url'], $t, $status['status'], $status['code'], 0);
         }else{
+          $response2 = getHttpStatusCode($item[1]);
+          $status['status'] = getStatus($response2, $httpCodesList);
+          if($status['status'] != "Up"){
           updateStatus($status['url'], $t, $status['status'], $status['code'], 1);
           echo $status['url']." error, send to ".$email;
           $webContent = get_data($status['url']);
           #mail 服务器down;
           mail($email,$subject_err,$webContent);
           mail($tmpEmail,$subject_err,$webContent);
+          }else{
+          updateStatus($status['url'], $t, $status['status'], $status['code'], 0);
+          }
         }
       }else{
         if($status['status'] == "Up"){
