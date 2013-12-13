@@ -92,44 +92,29 @@
         $strtime = date("Y-m-d H:i:s", $items[0][2]);
         $success_rate = getSuccessRate($iface, 7);
         $success_rate .= '%';
+		print "<table width=\"100%\" cellspacing=\"0\" class=\"summarytb\">
+		       <tr><th class=\"label\" width=\"25%\">更新时间</th><th class=\"label\" width=\"25%\">状态</th><th class=\"label\" width=\"25%\">状态代码</th><th class=\"label\" width=\"25%\">可用率</th></tr>";
         echo "<tr>
               <td>".$strtime."</td>
               <td>".$items[0][3]."</td>
               <td>".$items[0][4]."</td>
               <td>".$success_rate."</td>";
         echo "</tr>";
-        print "<tr>";
-        print "<td class=\"label\" style=\"width:120px;\">&nbsp;</td>";
-        print "<td class=\"label\">".cpu利用率."</td>";
-        print "<td class=\"label\"> $cpu </td>";
-        print "</tr>\n";
-        print "<tr>";
-        print "<td class=\"label\" style=\"width:120px;\">&nbsp;</td>";
-        print "<td class=\"label\">".内存使用率."</td>";
-        print "<td class=\"label\"> $mem</td>";
-        print "</tr>\n";
-        print "<tr>";
-        print "<td class=\"label\" style=\"width:120px;\">&nbsp;</td>";
-        print "<td class=\"label\">".系统负载."</td>";
-        print "<td class=\"label\"> $load </td>";
-        print "</tr>\n";
-        print "<tr>";
-        print "<td class=\"label\" style=\"width:120px;\">&nbsp;</td>";
-        print "<td class=\"label\">".下行速率KB."</td>";
-        print "<td class=\"label\"> $download_rate </td>";
-        print "</tr>\n";
-        print "<tr>";
-        print "<td class=\"label\" style=\"width:120px;\">&nbsp;</td>";
-        print "<td class=\"label\">".上行速率KB."</td>";
-        print "<td class=\"label\"> $upload_rate </td>";
-        print "</tr>\n";
-        print "<tr>";
-        print "<td class=\"label\" style=\"width:120px;\">&nbsp;</td>";
-        print "<td class=\"label\">".硬盘使用情况（）."</td>";
-        print "<td class=\"label\"> $partition_total </td>";
-        print "<td class=\"label\"> $partition_used </td>";
-        print "<td class=\"label\"> $partition_pct </td>";
-        print "</tr>\n";
+        print "</tr><tr><th class=\"label\">cpu利用率</th><th class=\"label\">内存使用率</th><th class=\"label\">系统负载</th><th class=\"label\">下行速率KB</th></tr>";
+        echo "<tr>
+              <td>".$cpu."</td>
+              <td>".$mem."</td>
+              <td>".$load."</td>
+              <td>".$download_rate."</td>";
+        echo "</tr>";	
+        print "<tr><th class=\"label\">上行速率KB</th><th class=\"label\">硬盘使用情况（总）</th><th class=\"label\">硬盘使用情况（已用）</th><th class=\"label\">硬盘使用情况（使用率）</th></tr>";
+        echo "<tr>
+              <td>".$upload_rate."</td>
+              <td>".$partition_total."</td>
+              <td>".$partition_used."</td>
+              <td>".$partition_pct."</td>";
+        echo "</tr>";			
+        print "</table>\n";
         print "<br/>\n";
         #write_data_table('Top 10 days', $top);
     }
@@ -140,10 +125,10 @@
         print "<table width=\"100%\" cellspacing=\"0\">\n";
         print "<caption>$caption</caption>\n";
         print "<tr>";
-        print "<th class=\"label\" style=\"width:120px;\">&nbsp;</th>";
-        print "<th class=\"label\">".T('In')."</th>";
-        print "<th class=\"label\">".T('Out')."</th>";
-        print "<th class=\"label\">".T('Total')."</th>";
+        print "<th class=\"label\" width=\"25%\">&nbsp;</th>";
+        print "<th class=\"label\" width=\"25%\">".T('In')."</th>";
+        print "<th class=\"label\" width=\"25%\">".T('Out')."</th>";
+        print "<th class=\"label\" width=\"25%\">".T('Total')."</th>";
         print "</tr>\n";
 
         for ($i=0; $i<count($tab); $i++)
@@ -173,12 +158,12 @@
       $test = "test";
       print "<form action=\"updateConfig.php\" method=\"post\">";
       print "<td><input name=\"ser_id\" type=\"hidden\" value= \"".$ser_info[0][0]."\"></td>";
-      print "<table border=\"1\">";
-      print "<tr>";
+      print "<table border=\"1\" bodercolor=\"#000\" style=\"border-collapse:collapse;width:90%;text-align:center;\">";
+      print "<tr style=\"background-color:#eef;\">";
       print "<td> 服务器地址 </td>";
       print "<td><input name=\"ser_name\" type=\"testbox\" value=\"".   $ser_info[0][1]."\"></td>";
       print "</tr>";
-      print "<tr>";
+      print "<tr style=\"background-color:#eef;\">";
       print "<td> 电子邮箱 </td>";
       print "<td><input name=\"ser_email\" type=\"testbox\" value=\"".   $ser_info[0][2]."\"></td>";
       print "</tr>";

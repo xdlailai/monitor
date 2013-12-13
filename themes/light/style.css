@@ -12,15 +12,16 @@ body{width:1000px; margin:0 auto;font-family: 'Trebuchet MS', Verdana, sans-seri
 .title1{padding:3px 5px;background:#ddddee;color:#000;border-bottom:1px solid #fff;cursor:pointer;}
 .content li{color:#336699;background:#eef;border-bottom:1px solid #fff;}
 #sidebar a{ font-size: 1em;font-weight: bold;}
+.summarytb th{font-size:0.8em; font-weight:100;}
 .right{width:100%;background:#ddddee; text-align:center; padding-bottom:5px; }
 #content{ margin-left:190px;}
 #header{padding: 5px 8px; border:1px solid #99b; border-collapse:collapse;color: #000; background-color: #eef;font-size: 1em;font-weight: bold; text-align: center;}
 #footer
 {padding: 5px 8px;border: 1px solid #99b; border-collapse: collapse;color: #000; background-color: #eef; font-weight: bold;text-align: center;}
 #main{padding: 8px;border-left: 1px solid #99b;border-right: 1px solid #99b;border-collapse: collapse;}
-#main table tr{height:30px;}
-#main td.numeric_odd{text-align: right; color: #000;background-color: #eef;}
-#main td.numeric_even{text-align: right;color: #000; background-color: #fff;}
+#main table tr{height:30px; text-align:center;}
+#main td.numeric_odd{text-align:center; color: #000;background-color: #eef;}
+#main td.numeric_even{text-align:center;color: #000; background-color: #fff;}
 #main td.label_odd{color: #000;background-color: #dde;}
 #main td.label_even{color: #000; background-color: #eee;}
 #main th.label{font-weight: bold;color: #000;background-color: #dde;}
