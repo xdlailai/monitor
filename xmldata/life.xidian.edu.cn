@@ -2,44 +2,17 @@
   <id>eth0</id>
   <nick>eth0</nick>
   <created><date><year>2013</year><month>08</month><day>09</day></date></created>
-  <updated><date><year>2013</year><month>12</month><day>12</day></date><time><hour>20</hour><minute>47</minute></time></updated>
+  <updated><date><year>2013</year><month>12</month><day>13</day></date><time><hour>10</hour><minute>39</minute></time></updated>
   <traffic>
-   <total><rx>305732</rx><tx>284326</tx></total>
+   <total><rx>440279</rx><tx>565824</tx></total>
    <days>
-    <day id="0"><date><year>2013</year><month>12</month><day>12</day></date><rx>92142</rx><tx>107013</tx></day>
-    <day id="1"><date><year>2013</year><month>08</month><day>21</day></date><rx>55630</rx><tx>19816</tx></day>
-    <day id="2"><date><year>2013</year><month>08</month><day>20</day></date><rx>13252</rx><tx>16961</tx></day>
-    <day id="3"><date><year>2013</year><month>08</month><day>19</day></date><rx>6506</rx><tx>17257</tx></day>
-    <day id="4"><date><year>2013</year><month>08</month><day>18</day></date><rx>11864</rx><tx>18771</tx></day>
-    <day id="5"><date><year>2013</year><month>08</month><day>17</day></date><rx>15643</rx><tx>16094</tx></day>
-    <day id="6"><date><year>2013</year><month>08</month><day>16</day></date><rx>22973</rx><tx>20114</tx></day>
-    <day id="7"><date><year>2013</year><month>08</month><day>15</day></date><rx>21484</rx><tx>21022</tx></day>
-    <day id="8"><date><year>2013</year><month>08</month><day>14</day></date><rx>16238</rx><tx>18597</tx></day>
-    <day id="9"><date><year>2013</year><month>08</month><day>13</day></date><rx>23531</rx><tx>20367</tx></day>
-    <day id="10"><date><year>2013</year><month>08</month><day>12</day></date><rx>10779</rx><tx>4287</tx></day>
-    <day id="11"><date><year>2013</year><month>08</month><day>11</day></date><rx>6412</rx><tx>1884</tx></day>
-    <day id="12"><date><year>2013</year><month>08</month><day>10</day></date><rx>7279</rx><tx>1164</tx></day>
-    <day id="13"><date><year>2013</year><month>08</month><day>09</day></date><rx>1999</rx><tx>979</tx></day>
-   </days>
-   <months>
-    <month id="0"><date><year>2013</year><month>12</month></date><rx>92142</rx><tx>107013</tx></month>
-    <month id="1"><date><year>2013</year><month>08</month></date><rx>213590</rx><tx>177313</tx></month>
-   </months>
-   <tops>
-   </tops>
-  </traffic>
-  <info>
-   <cpu>44.20</cpu>
-   <mem>47.27</mem>
-   <load>1.63</load>
-   <mem>47.27</mem>
-   <download_rate>18.30</download_rate>
-   <upload_rate>14.89</upload_rate>
-   <partition>
-    <dir>/</dir>
-    <total>290607</total>
-    <used>21430</used>
-    <pct>7.78</pct>
-   </partition>
-  </info>
- </interface>
+    <day id="0"><date><year>2013</year><month>12</month><day>13</day></date><rx>113192</rx><tx>222399</tx></day>
+    <day id="1"><date><year>2013</year><month>12</month><day>12</day></date><rx>113497</rx><tx>166112</tx></day>
+    <day id="2"><date><year>2013</year><month>08</month><day>21</day></date><rx>55630</rx><tx>19816</tx></day>
+    <day id="3"><date><year>2013</year><month>08</month><day>20</day></date><rx>13252</rx><tx>16961</tx></day>
+    <day id="4"><date><year>2013</year><month>08</month><day>19</day></date><rx>6506</rx><tx>17257</tx></day>
+    <day id="5"><date><year>2013</year><month>08</month><day>18</day></date><rx>11864</rx><tx>18771</tx></day>
+    <day id="6"><date><year>2013</year><month>08</month><day>17</day></date><rx>15643</rx><tx>16094</tx></day>
+    <day id="7"><date><year>2013</year><month>08</month><day>16</day></date><rx>22973</rx><tx>20114</tx></day>
+    <day id="8"><date><year>2013</year><month>08</month><day>15</day></date><rx>21484</rx><tx>21022</tx></day>
+    <day id="9"><date><year>2013</year><month>08</month><day>14</day></date><rx>16238</rx><tx

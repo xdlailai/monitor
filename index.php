@@ -221,15 +221,6 @@
     }
 
     </script>
-    <style type="text/css">
-<!--
-*{margin:0:padding:0;list-style:none;font-size;14px}
-#nav{margin:10px;text-align:center;line-height:25px;width:150px;}
-.title{background:#336699;color:#fff;border-bottom:1px solid #fff;cursor:pointer;}
-.title1{background:#888;color:#000;border-bottom:1px solid #666;cursor:pointer;}
-.content li{color:#336699;background:#ddd;border-bottom:1px solid #fff;}
--->
-</style>
      
 
   <link rel="stylesheet" type="text/css" href="themes/<?php echo $style ?>/style.css"/>
@@ -253,8 +244,8 @@
     if($page =='a'){
         if(!empty($items))
         {
-             echo "<table border='1'>
-             <tr>
+             echo "<table border='1' bodercolor=\"#000\" style=\"border-collapse:collapse; width:90%; text-align:center;\">
+             <tr style=\"background-color:#eef;\">
              <th>监控项目</th>
              <th>更新时间</th>
              <th>状态</th>

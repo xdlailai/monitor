@@ -14,16 +14,16 @@
   </traffic>
   <info>
    <cpu>0.35</cpu>
-   <mem>10.37</mem>
-   <load>0.12</load>
-   <mem>10.37</mem>
-   <download_rate>2.60</download_rate>
-   <upload_rate>2.96</upload_rate>
+   <mem>9.74</mem>
+   <load>0.21</load>
+   <mem>9.74</mem>
+   <download_rate>2.35</download_rate>
+   <upload_rate>2.89</upload_rate>
    <partition>
     <dir>/</dir>
     <total>37538</total>
-    <used>34416</used>
-    <pct>96.59</pct>
+    <used>34433</used>
+    <pct>96.64</pct>
    </partition>
   </info>
  </interface>
