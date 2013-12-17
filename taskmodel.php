@@ -16,14 +16,6 @@ function connect()
 	return $conn;
 }
 
-function markItemComplete($item_id)
-{
-	$conn = connect();
-	$sql = "UPDATE items SET is_complete = 1 WHERE id = ?";
-	$stmt = $conn->prepare($sql);
-	$stmt->bindValue(1, $item_id);
-	$stmt->execute();
-}
 
 function updateStatus($ser_name, $ser_time, $ser_status, $ser_code, $isDown)
 {
@@ -39,15 +31,15 @@ function updateStatus($ser_name, $ser_time, $ser_status, $ser_code, $isDown)
 
 }
 
-function updateServerConfig($ser_name, $ser_email, $ser_frequency, $ser_sendemail, $ser_id)
+function updateServerConfig($ser_name, $ser_email, $ser_name_zh, $ser_ip, $ser_id)
 {
   $conn = connect();
-  $sql = "UPDATE server SET name = ?, email=?, interval_time=?, send_email=? where ser_id = ?";
+  $sql = "UPDATE server SET name = ?, email=?, name_zh=?, ip=? where ser_id = ?";
 	$stmt = $conn->prepare($sql);
 	$stmt->bindValue(1, $ser_name);
 	$stmt->bindValue(2, $ser_email);
-	$stmt->bindValue(3, $ser_frequency);
-	$stmt->bindValue(4, $ser_sendmail);
+	$stmt->bindValue(3, $ser_name_zh);
+	$stmt->bindValue(4, $ser_ip);
 	$stmt->bindValue(5, $ser_id);
 	$stmt->execute();
 

@@ -18,7 +18,7 @@ body{width:1000px; margin:0 auto;font-family: 'Trebuchet MS', Verdana, sans-seri
 #header{padding: 5px 8px; border:1px solid #99b; border-collapse:collapse;color: #000; background-color: #eef;font-size: 1em;font-weight: bold; text-align: center;}
 #footer
 {padding: 5px 8px;border: 1px solid #99b; border-collapse: collapse;color: #000; background-color: #eef; font-weight: bold;text-align: center;}
-#main{padding: 8px;border-left: 1px solid #99b;border-right: 1px solid #99b;border-collapse: collapse;}
+#main{padding: 8px; border-left: 1px solid #99b;border-right: 1px solid #99b;border-collapse: collapse;}
 #main table tr{height:30px; text-align:center;}
 #main td.numeric_odd{text-align:center; color: #000;background-color: #eef;}
 #main td.numeric_even{text-align:center;color: #000; background-color: #fff;}

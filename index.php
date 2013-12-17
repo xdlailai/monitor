@@ -164,8 +164,16 @@
       print "<td><input name=\"ser_name\" type=\"testbox\" value=\"".   $ser_info[0][1]."\"></td>";
       print "</tr>";
       print "<tr style=\"background-color:#eef;\">";
+      print "<td>name  </td>";
+      print "<td><input name=\"ser_name_zh\" type=\"testbox\" value=\"".   $ser_info[0][2]."\"></td>";
+      print "</tr>";
+      print "<tr style=\"background-color:#eef;\">";
+      print "<td> ip </td>";
+      print "<td><input name=\"ser_ip\" type=\"testbox\" value=\"".   $ser_info[0][3]."\"></td>";
+      print "</tr>";
+      print "<tr style=\"background-color:#eef;\">";
       print "<td> 电子邮箱 </td>";
-      print "<td><input name=\"ser_email\" type=\"testbox\" value=\"".   $ser_info[0][2]."\"></td>";
+      print "<td><input name=\"ser_email\" type=\"testbox\" value=\"".   $ser_info[0][4]."\"></td>";
       print "</tr>";
       print "</table>";
       print "<input type=\"submit\" value=\"config\"/>";

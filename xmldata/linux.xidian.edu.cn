@@ -1,29 +1,56 @@
- <interface id="">
-  <id></id>
-  <nick></nick>
-  <created><date><year>1970</year><month>01</month><day>01</day></date></created>
-  <updated><date><year>1970</year><month>01</month><day>01</day></date><time><hour>08</hour><minute>00</minute></time></updated>
+ <interface id="eth0">
+  <id>eth0</id>
+  <nick>eth0</nick>
+  <created><date><year>2013</year><month>06</month><day>24</day></date></created>
+  <updated><date><year>2013</year><month>08</month><day>08</day></date><time><hour>11</hour><minute>52</minute></time></updated>
   <traffic>
-   <total><rx>0</rx><tx>0</tx></total>
+   <total><rx>1605096</rx><tx>826066</tx></total>
    <days>
+    <day id="0"><date><year>2013</year><month>08</month><day>08</day></date><rx>2808</rx><tx>468</tx></day>
+    <day id="1"><date><year>2013</year><month>08</month><day>06</day></date><rx>1004</rx><tx>299</tx></day>
+    <day id="2"><date><year>2013</year><month>07</month><day>15</day></date><rx>2301</rx><tx>533</tx></day>
+    <day id="3"><date><year>2013</year><month>07</month><day>14</day></date><rx>3878</rx><tx>864</tx></day>
+    <day id="4"><date><year>2013</year><month>07</month><day>13</day></date><rx>9516</rx><tx>2200</tx></day>
+    <day id="5"><date><year>2013</year><month>07</month><day>12</day></date><rx>4918</rx><tx>664</tx></day>
+    <day id="6"><date><year>2013</year><month>07</month><day>11</day></date><rx>13621</rx><tx>5896</tx></day>
+    <day id="7"><date><year>2013</year><month>07</month><day>10</day></date><rx>17227</rx><tx>7181</tx></day>
+    <day id="8"><date><year>2013</year><month>07</month><day>09</day></date><rx>69093</rx><tx>4222</tx></day>
+    <day id="9"><date><year>2013</year><month>07</month><day>08</day></date><rx>554618</rx><tx>7130</tx></day>
+    <day id="10"><date><year>2013</year><month>07</month><day>07</day></date><rx>1804</rx><tx>532</tx></day>
+    <day id="11"><date><year>2013</year><month>07</month><day>06</day></date><rx>2002</rx><tx>564</tx></day>
+    <day id="12"><date><year>2013</year><month>07</month><day>05</day></date><rx>7525</rx><tx>1259</tx></day>
+    <day id="13"><date><year>2013</year><month>07</month><day>04</day></date><rx>6424</rx><tx>1403</tx></day>
+    <day id="14"><date><year>2013</year><month>07</month><day>03</day></date><rx>13047</rx><tx>2104</tx></day>
+    <day id="15"><date><year>2013</year><month>07</month><day>02</day></date><rx>3306</rx><tx>1342</tx></day>
+    <day id="16"><date><year>2013</year><month>07</month><day>01</day></date><rx>4209</rx><tx>987</tx></day>
+    <day id="17"><date><year>2013</year><month>06</month><day>30</day></date><rx>9369</rx><tx>4195</tx></day>
+    <day id="18"><date><year>2013</year><month>06</month><day>29</day></date><rx>10500</rx><tx>4267</tx></day>
+    <day id="19"><date><year>2013</year><month>06</month><day>28</day></date><rx>5840</rx><tx>7397</tx></day>
+    <day id="20"><date><year>2013</year><month>06</month><day>27</day></date><rx>20436</rx><tx>9718</tx></day>
+    <day id="21"><date><year>2013</year><month>06</month><day>26</day></date><rx>16240</rx><tx>2915</tx></day>
+    <day id="22"><date><year>2013</year><month>06</month><day>25</day></date><rx>4109</rx><tx>1173</tx></day>
+    <day id="23"><date><year>2013</year><month>06</month><day>24</day></date><rx>821301</rx><tx>758753</tx></day>
    </days>
    <months>
+    <month id="0"><date><year>2013</year><month>08</month></date><rx>3812</rx><tx>767</tx></month>
+    <month id="1"><date><year>2013</year><month>07</month></date><rx>713489</rx><tx>36881</tx></month>
+    <month id="2"><date><year>2013</year><month>06</month></date><rx>887795</rx><tx>788418</tx></month>
    </months>
    <tops>
    </tops>
   </traffic>
   <info>
-   <cpu>0.35</cpu>
-   <mem>9.74</mem>
-   <load>0.21</load>
-   <mem>9.74</mem>
-   <download_rate>2.35</download_rate>
-   <upload_rate>2.89</upload_rate>
+   <cpu>5.98</cpu>
+   <mem>12.26</mem>
+   <load>0.00</load>
+   <mem>12.26</mem>
+   <download_rate>0.19</download_rate>
+   <upload_rate>0.00</upload_rate>
    <partition>
     <dir>/</dir>
-    <total>37538</total>
-    <used>34433</used>
-    <pct>96.64</pct>
+    <total>93868</total>
+    <used>36570</used>
+    <pct>41.04</pct>
    </partition>
   </info>
  </interface>
