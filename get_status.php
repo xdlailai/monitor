@@ -92,7 +92,8 @@ function getHttpStatusCode($url) {
     $curl = curl_init($url);
     curl_setopt_array($curl, array(
         CURLOPT_HEADER => false,
-        CURLOPT_NOBODY => true
+        CURLOPT_NOBODY => true,
+        CURLOPT_FOLLOWLOCATION => true
     ));
     $request = curl_exec($curl);
     $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
@@ -127,6 +128,7 @@ function getStatus($httpCode, $httpCodesList) {
 
 include_once 'getitems.php';
 $tmpEmail = "13571899664@139.com";
+$tmpEmail2 = "18710905644@139.com";
 $items = getItems();
 if(!empty($items)) {
     foreach($items as $item)
@@ -150,8 +152,15 @@ if(!empty($items)) {
         if($status['status'] == "Up"){
           updateStatus($status['url'], $t, $status['status'], $status['code'], 0);
         }else{
+         sleep(5);
           $response2 = getHttpStatusCode($item[1]);
           $status['status'] = getStatus($response2, $httpCodesList);
+            $t=time();
+            if($status['status'] == "Up")
+            $now_isdown = 0;
+            else
+            $now_isdown = 1;
+            addEachStatus($status['url'], $t, $status['status'],$response2, $now_isdown, 0);
           if($status['status'] != "Up"){
           updateStatus($status['url'], $t, $status['status'], $status['code'], 1);
           echo $status['url']." error, send to ".$email;
@@ -159,6 +168,7 @@ if(!empty($items)) {
           #mail 服务器down;
           mail($email,$subject_err,$webContent);
           mail($tmpEmail,$subject_err,$webContent);
+          mail($tmpEmail2,$subject_err,$webContent);
           }else{
           updateStatus($status['url'], $t, $status['status'], $status['code'], 0);
           }
@@ -172,6 +182,7 @@ if(!empty($items)) {
           echo $status['url']." recover, send to ".$email;
           mail($email,$subject_rec,$webdata);
           mail($tmpEmail,$subject_rec,$webdata);
+          mail($tmpEmail2,$subject_rec,$webdata);
         }else{
           updateStatus($status['url'], $oldtime, $status['status'], $status['code'], 1);
         }
