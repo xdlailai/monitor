@@ -24,7 +24,8 @@
         foreach ($iface_list as $if)
         {
             //print "<li class=\"iface\">";
-            print "<div class=\"title\" id=\"menu$i\" onclick=\"showmenu($i)\"> $if</div>";
+			$ifZhname = getServerZhname($if);
+            print "<div class=\"title\" id=\"menu$i\" onclick=\"showmenu($i)\"> $ifZhname</div>";
             print "<div id=\"list$i\" class=\"content\" style=\"display:none\">";
             print "<ul>";
             foreach ($page_list as $pg)
@@ -70,17 +71,26 @@
         //
         // build array for write_data_table
         //
-
+        $sum[0]['act'] = 0;
         $sum[1]['act'] = 1;
         $sum[1]['label'] = T('This day');
+		if(count($day) !=0){
         $sum[1]['rx'] = $day[0]['rx'];
         $sum[1]['tx'] = $day[0]['tx'];
-
+         }else{
+		 $sum[1]['rx'] = 0;
+		 $sum[1]['tx'] = 0;
+		 }
+		 
         $sum[2]['act'] = 1;
         $sum[2]['label'] = T('This month');
+		if(count($month) != 0){
         $sum[2]['rx'] = $month[0]['rx'];
         $sum[2]['tx'] = $month[0]['tx'];
-
+        }else{
+		$sum[2]['rx'] = 0;
+		$sum[2]['tx'] = 0;
+		}
         $sum[3]['act'] = 1;
         $sum[3]['label'] = T('All time');
         $sum[3]['rx'] = $trx;
@@ -164,11 +174,11 @@
       print "<td><input name=\"ser_name\" type=\"testbox\" value=\"".   $ser_info[0][1]."\"></td>";
       print "</tr>";
       print "<tr style=\"background-color:#eef;\">";
-      print "<td>name  </td>";
+      print "<td>服务器名称</td>";
       print "<td><input name=\"ser_name_zh\" type=\"testbox\" value=\"".   $ser_info[0][2]."\"></td>";
       print "</tr>";
       print "<tr style=\"background-color:#eef;\">";
-      print "<td> ip </td>";
+      print "<td> ip地址</td>";
       print "<td><input name=\"ser_ip\" type=\"testbox\" value=\"".   $ser_info[0][3]."\"></td>";
       print "</tr>";
       print "<tr style=\"background-color:#eef;\">";
@@ -229,7 +239,7 @@
 <div id="wrap">
   <div id="sidebar"><?php write_side_bar(); ?></div>
    <div id="content">
-    <div id="header"><?php print T('Status for')." $iface_title[$iface] ($iface)";?></div>
+    <div id="header"><?php print T('Status for')."  ($iface)";?></div>
     <div id="main">
     <?php
     $graph_params = "if=$iface&amp;page=$page&amp;style=$style";
@@ -250,10 +260,11 @@
                  $strtime=date("Y-m-d H:i:s", "$item[2]");
                  $success_rate = getSuccessRate($item[1], 7);
                  $succesee_rate =$success_rate.'%';
+				 $serZhName = getServerZhname($item[1]);
                  echo "<tr>
-                     <td>".$item[1]."</td>
+                     <td>".$serZhName."</td>
                      <td>".$strtime."</td>
-                     <td>".$item[3]."</td>
+                     <td>".$httpCodesListZh[strval($item[3])]."</td>
                      <td>".$item[4]."</td>
                      <td>".$success_rate."</td>";
                  echo "</tr>";
@@ -292,7 +303,7 @@
     }
     ?>
     </div>
-    <div id="footer"><a href="http://www.sqweek.com/">new counter</a> 1.5.1 - &copy;2013 seenic</div>
+    <div id="footer"><a href="http://www.sqweek.com/">new counter</a> 1.0 - &copy;2013 seenic</div>
   </div>
 </div>
 

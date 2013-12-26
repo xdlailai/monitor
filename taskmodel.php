@@ -98,6 +98,23 @@ function getMailname($ser_name)
 	$res = $stmt->fetch();
 	return $res['email'];
 }
+function getServerIp($ser_name)
+{
+  $conn = connect();
+  $sql = "SELECT ip FROM server where name ='$ser_name'";
+	$stmt = $conn->query($sql);
+	$res = $stmt->fetch();
+	return $res['ip'];
+}
+function getServerZhname($ser_name)
+{
+  $conn = connect();
+  $sql = "SELECT name_zh FROM server where name ='$ser_name'";
+	$stmt = $conn->query($sql);
+	$res = $stmt->fetch();
+	return $res['name_zh'];
+}
+
 function getOldtime($ser_name)
 {
   $conn = connect();
@@ -109,7 +126,7 @@ function getOldtime($ser_name)
 #$test = getMailname("linux.xidian.edu.cn");
 #echo $test;
 
-function addserver($name, $email, $interval, $sendemail)
+function addserver($name, $name_zh, $ser_ip, $email)
 {
   $isin = false;
   $items = getAllItems();
@@ -123,12 +140,12 @@ function addserver($name, $email, $interval, $sendemail)
     }
   }
 	$conn = connect();
-	$sql = "INSERT INTO server (name, email, interval_time, send_email) VALUES (?, ?, ?, ?)";
+	$sql = "INSERT INTO server (name, name_zh, ip, email) VALUES (?, ?, ?, ?)";
 	$stmt = $conn->prepare($sql);
 	$stmt->bindValue(1, $name);
-	$stmt->bindValue(2, $email);
-	$stmt->bindValue(3, $interval);
-	$stmt->bindValue(4, $sendemail);
+	$stmt->bindValue(2, $name_zh);
+	$stmt->bindValue(3, $ser_ip);
+	$stmt->bindValue(4, $email);
 	$stmt->execute();
 
 	$conn2 = connect();
@@ -138,6 +155,12 @@ function addserver($name, $email, $interval, $sendemail)
 	$stmt2->bindValue(2, '0');
 	$stmt2->bindValue(3, '0');
 	$stmt2->execute();
+
+	$conn3 = connect();
+	$sql3 = "INSERT INTO total_info (name) VALUES (?)";
+	$stmt3 = $conn3->prepare($sql3);
+	$stmt3->bindValue(1, $name);
+	$stmt3->execute();
 }
 
 function addEachStatus($name, $time, $status, $code, $isdown,$pingtime)
@@ -191,20 +214,66 @@ function getSuccessRate($ser_name, $interval)
 
 function CheckPasswd($username, $password)
 {
+    //echo "begin check";
     $conn = connect();
     $str="SELECT * FROM admin_info WHERE username='$username';";
     $stmt = $conn->query($str);
     $dataTmp = $stmt->fetch();
     $data = $dataTmp['password'];
+	//echo $data;
+	//echo "\n";
+	//echo md5($password);
     if(md5($password)==$data)
     {
         $_SESSION["username"] = $username;
+		
         echo("<script>window.location='./index.php'</script>");
     }else
     {
+	    echo "confirm error";
         echo("<script language=\"JavaScipt\">alert(\"密码错误!\");</script>");
         echo("<script>window.location='./login.html'</script>");
     }
 
 }
+
+function updateTotalInfo($ser_name, $ser_time, $ser_cpu, $ser_mem, $ser_load, $downrate, $uploadrate, $totalpart, $usedpart, $pctpart)
+{
+  $conn = connect();
+  $sql = "UPDATE total_info SET time = ?, cpu=?, mem=?, linuxload=?, downloadRate=?, uploadRate=?, totalPartition=?, usedPartition=?,pctPartion=? where name = ?";
+	$stmt = $conn->prepare($sql);
+	$stmt->bindValue(1, $ser_time);
+	$stmt->bindValue(2, $ser_cpu);
+	$stmt->bindValue(3, $ser_mem);
+	$stmt->bindValue(4, $ser_load);
+	$stmt->bindValue(5, $downrate);
+	$stmt->bindValue(6, $uploadrate);
+	$stmt->bindValue(7, $totalpart);
+	$stmt->bindValue(8, $usedpart);
+	$stmt->bindValue(9, $pctpart);
+	$stmt->bindValue(10, $ser_name);
+	$stmt->execute();
+
+}
+
+function addEachInfo($ser_name, $ser_time, $ser_cpu, $ser_mem, $ser_load, $downrate, $uploadrate, $totalpart, $usedpart, $pctpart)
+{
+  $conn = connect();
+	$sql2 = "INSERT INTO all_status (name, time, status, code, isdown, ping_time) VALUES (?, ?, ?, ?, ?, ?)";
+  $sql = "INSERT INTO all_info (time, cpu, mem, linuxload, downloadRate, uploadRate, totalPartition, usedPartion,pctPartion,name) VALUES(?,?,?,?,?,?,?,?,?,?)";
+	$stmt = $conn->prepare($sql);
+	$stmt->bindValue(1, $ser_time);
+	$stmt->bindValue(2, $ser_cpu);
+	$stmt->bindValue(3, $ser_mem);
+	$stmt->bindValue(4, $ser_load);
+	$stmt->bindValue(5, $downrate);
+	$stmt->bindValue(6, $uploadrate);
+	$stmt->bindValue(7, $totalpart);
+	$stmt->bindValue(8, $usedpart);
+	$stmt->bindValue(9, $pctpart);
+	$stmt->bindValue(10, $ser_name);
+	$stmt->execute();
+
+}
+
 ?>

@@ -6,6 +6,13 @@
     $locale = 'en_US.UTF-8';
     $language = 'en';
     $iface_list = array();
+    $httpCodesListZh = array(
+        'Up' => '正常',
+        'Problem' => '故障',
+        'Unreachable' => '网络不可到达',
+        'Timeout' => '超时',
+        'Redirecting' => '重定向'
+    );
     $ser_names = getAllNames();
     foreach($ser_names as $ser_name)
     {

@@ -3,12 +3,12 @@ include_once 'taskmodel.php';
 
 $ser_name = $_POST['ser_name'];
 $ser_email = $_POST['ser_email'];
-$ser_interval = 5;
-#$ser_interval = $_POST['ser_interval'];
-#$ser_sendemail = $_POST['ser_sendemail'];
-$ser_sendemail = 1;
 
-addserver($ser_name, $ser_email, $ser_interval, $ser_sendemail);
+$ser_nameZh = $_POST['ser_nameZh'];
+$ser_ip = $_POST['ser_ip'];
+
+
+addserver($ser_name, $ser_nameZh, $ser_ip, $ser_email);
 
 header('Location: index.php');
 ?>
